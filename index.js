@@ -1,5 +1,5 @@
-import {HashMap} from './hashmap';
+import {HashMap} from './hashmap.js';
 
-const hashMap = new HashMap();
+const test = new HashMap();
 
-hashMap.set(hashMap);
+test.set('apple', 'red');
