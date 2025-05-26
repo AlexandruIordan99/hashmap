@@ -104,16 +104,18 @@ class HashMap{
     return "Key was not there in the first place."
   }
 
-  length(){
+  length() {
     let count = 0
-    for (let i =0; i < this.capacity; i++){
-      let key = bucket[i][0];
-      if (key !== null) {
-        count ++;
+    for (let bucket of this.buckets) {
+      for (let pair of bucket) {
+        if (pair[0] !== null) {
+          count++;
+        }
       }
     }
-    return count;
-  }
+      return count;
+    }
+
 
   clear(){
     this.buckets = new Array(this.capacity)
@@ -123,10 +125,12 @@ class HashMap{
 
   keys(){
     let keyArray =[];
-    for (let i =0; i < this.capacity; i++){
-      let key = bucket[i][0];
-      if (key !== null) {
-        keyArray.push(key);
+    for (let bucket of this.buckets){
+      for (let i = 0; i < bucket.length; i++) {
+        let key = bucket[i][0];
+        if (key !== null) {
+          keyArray.push(key);
+        }
       }
     }
     return keyArray;
@@ -134,11 +138,12 @@ class HashMap{
 
   values(){
     let valueArray =[];
-    for (let i =0; i < this.capacity; i++){
-      let key = bucket[i][0];
-      if (key !== null) {
-        let value = bucket[i][1];
-        valueArray.push(value);
+    for (let bucket of this.buckets){
+      for (let i = 0; i < bucket.length; i++) {
+        let key = bucket[i][0];
+        if (key !== null) {
+          valueArray.push(bucket[i][1]);
+        }
       }
     }
     return valueArray;
@@ -146,10 +151,12 @@ class HashMap{
 
   entries(){
     let entryArray =[];
-    for (let i =0; i < this.capacity; i++){
-      let kvPair = bucket[i];
-      if(kvPair[0] !==null){
-        entryArray.push(kvPair[1]);
+    for (let bucket of this.buckets) {
+      for (let i = 0; i < bucket.length; i++) {
+        let kvPair = bucket[i];
+        if (kvPair[0] !== null) {
+          entryArray.push(kvPair);
+        }
       }
     }
     return entryArray;
@@ -158,4 +165,4 @@ class HashMap{
 
 }
 
-export {HashMap};
+module.exports = {HashMap};
