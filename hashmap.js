@@ -105,14 +105,14 @@ class HashMap{
   }
 
   length(){
-    let keyArray ={};
+    let count = 0
     for (let i =0; i < this.capacity; i++){
       let key = bucket[i][0];
       if (key !== null) {
-        keyArray.push(key);
+        count ++;
       }
     }
-    return keyArray.length;
+    return count;
   }
 
   clear(){
@@ -122,7 +122,7 @@ class HashMap{
   }
 
   keys(){
-    let keyArray ={};
+    let keyArray =[];
     for (let i =0; i < this.capacity; i++){
       let key = bucket[i][0];
       if (key !== null) {
@@ -133,7 +133,7 @@ class HashMap{
   }
 
   values(){
-    let valueArray ={};
+    let valueArray =[];
     for (let i =0; i < this.capacity; i++){
       let key = bucket[i][0];
       if (key !== null) {
@@ -145,7 +145,7 @@ class HashMap{
   }
 
   entries(){
-    let entryArray ={};
+    let entryArray =[];
     for (let i =0; i < this.capacity; i++){
       let kvPair = bucket[i];
       if(kvPair[0] !==null){
